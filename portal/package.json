@@ -7,7 +7,13 @@
     "postinstall": "node ./decorate-angular-cli.js",
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "dashboard:serve": "npx concurrently \"npm run css:serve\" \"nx serve dashboard\"",
+    "dashboard:build": "nx build dashboard",
+    "dashboard:test": "nx test dashboard",
+    "dashboard:lint": "nx lint dashboard",
+    "dashboard:e2e": "nx e2e dashboard",
+    "css:serve": "tailwindcss -o src/tailwind.css --watch"
   },
   "private": true,
   "dependencies": {
