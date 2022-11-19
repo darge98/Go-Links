@@ -19,7 +19,10 @@
           "apps/dashboard/src/favicon.ico",
           "apps/dashboard/src/assets"
         ],
-        "styles": ["apps/dashboard/src/styles.scss"],
+        "styles": [
+          "@fortawesome/fontawesome-free/css/all.min.css",
+          "apps/dashboard/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
