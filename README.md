@@ -23,12 +23,12 @@ In this repo there are 3 projects.
 
 ## :memo: Changelog
 
-[Learn about the latest improvements](changelog).
+TBD
 
 
 ## :pencil2: Contributing
 
-[Learn how contribute to this project](contributing).
+TBD
 
 ## :calendar: Roadmap
 
