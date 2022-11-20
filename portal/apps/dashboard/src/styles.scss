@@ -4,6 +4,7 @@
 
 @layer base {
   :root {
+
     /* For hsl(198deg 93% 60% / <alpha-value>) */
 
     /* These are the splashes of color that should appear the most in your UI,
@@ -72,6 +73,10 @@
 
     /* Success / Positive */
     // green
+  }
+
+  html {
+    font-family: Proxima Nova, system-ui, sans-serif;
   }
 }
 

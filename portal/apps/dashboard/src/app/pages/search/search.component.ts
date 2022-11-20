@@ -38,7 +38,6 @@ export class SearchComponent {
   }
 
   whenValueChange(searchValue: string): void {
-    console.debug('valueChange:', searchValue);
     this.formValue$.next(searchValue);
   }
 
