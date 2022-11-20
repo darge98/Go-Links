@@ -14,7 +14,6 @@ export class SearchService {
   }
 
   search(request: SearchRequest): Observable<SearchResponse[]> {
-    throw new Error("not implemented");
     return this.searchHttpService.search(request);
   }
 }

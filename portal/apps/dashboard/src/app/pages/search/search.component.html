@@ -17,12 +17,12 @@
 
         <ng-template #errorTemplate>
 
-          <div class="flex flex-row justify-center items-start">
+          <div class="flex flex-col justify-center items-center md:flex-row">
             <dashboard-furry></dashboard-furry>
-            <div class="flex flex-col justify-center items-start">
-              <h1 class="font-bold text-7xl mb-2.5 uppercase text-primary-800 dark:text-dark-100">500</h1>
-              <h2 class="font-normal uppercase text-neutral-700 dark:text-dark-300">OOPS! </h2>
-<!--              <p class="font-normal text-sm max-w-xs" dangerouslySetInnerHTML={{__html: message}}></p>-->
+            <div class="flex flex-col justify-center items-center md:items-start" *ngIf="error$ | async as error">
+              <h1 class="font-bold text-7xl mb-2.5 uppercase text-primary-800 dark:text-dark-100">{{error.status}}</h1>
+              <h2 class="font-normal text-2xl uppercase text-neutral-500 dark:text-dark-300">OOPS! {{error.description}}</h2>
+              <p class="font-normal mt-2 text-sm text-neutral-500 dark:text-dark-100 max-w-xs" [innerHTML]="error.courtesyMessage"></p>
             </div>
           </div>
         </ng-template>

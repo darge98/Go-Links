@@ -7,6 +7,8 @@ import {SearchRequest} from "../../entities/search/search-request";
 import {SearchResponse} from "../../entities/search/search-response";
 import {CardComponent} from "../../components/card/card.component";
 import {FurryComponent} from "../../components/furry/furry.component";
+import {HttpErrorResponse} from "@angular/common/http";
+import {AppError} from "../../entities/error/app-error";
 
 @Component({
   standalone: true,
@@ -22,7 +24,7 @@ import {FurryComponent} from "../../components/furry/furry.component";
 export class SearchComponent {
 
   formValue$ = new BehaviorSubject<string>('');
-  error$ = new BehaviorSubject<Error | null>(null);
+  error$ = new BehaviorSubject<AppError | null>(null);
   loading$ = new BehaviorSubject<boolean>(false);
   searchValues$: Observable<SearchResponse[]> | undefined;
 
@@ -54,7 +56,7 @@ export class SearchComponent {
     this.setError(null);
   }
 
-  private endRequestWithError(error: Error | null) {
+  private endRequestWithError(error: HttpErrorResponse | Error | null) {
     this.setLoading(false);
     this.setError(error);
   }
@@ -63,8 +65,29 @@ export class SearchComponent {
     this.loading$.next(value);
   }
 
-  private setError(value: Error | null) {
-    this.error$.next(value);
+  private setError(value: HttpErrorResponse | Error | null) {
+    this.error$.next(value !== null ? this.createError(value) : null);
+  }
+
+  private createError(error: HttpErrorResponse | Error): AppError {
+    const status = (error as HttpErrorResponse)?.status || 500;
+    let description;
+    let courtesyMessage;
+
+    switch (status) {
+      case 404: {
+        description = 'Not Found.';
+        courtesyMessage = 'Sorry but the page you are looking for does not exist, have been removed, name changed or is temporarily unavailable.';
+        break;
+      }
+      default: {
+        description = 'Something went wrong.';
+        courtesyMessage = 'Sorry but there are some problem with your request.<br/>Please try again.';
+        break;
+      }
+    }
+
+    return new AppError(status, description, courtesyMessage);
   }
 
   private createSearchRequestPayload(formValue: string): SearchRequest {
