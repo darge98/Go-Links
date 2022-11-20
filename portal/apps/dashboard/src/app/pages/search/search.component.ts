@@ -1,25 +1,25 @@
-import {Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {SearchBarComponent} from "../../components/search-bar/search-bar.component";
 import {BehaviorSubject, catchError, debounceTime, Observable, of, switchMap, tap} from "rxjs";
 import {SearchService} from "../../services/search.service";
 import {CommonModule} from "@angular/common";
 import {SearchRequest} from "../../entities/search/search-request";
 import {SearchResponse} from "../../entities/search/search-response";
-import {CardComponent} from "../../components/card/card.component";
+import {CardComponent} from "../../components/cards/card/card.component";
 import {FurryComponent} from "../../components/furry/furry.component";
 import {HttpErrorResponse} from "@angular/common/http";
 import {AppError} from "../../entities/error/app-error";
+import {SkeletonCardComponent} from "../../components/cards/skeleton-card/skeleton-card.component";
 
 @Component({
   standalone: true,
   imports: [
     SearchBarComponent, CardComponent, FurryComponent,
-    CommonModule
+    CommonModule, SkeletonCardComponent
   ],
   providers: [SearchService],
   templateUrl: './search.component.html',
-  // styles: [],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchComponent {
 
