@@ -1,10 +1,13 @@
 <div class="inline-flex flex-row items-center select-none cursor-pointer" (click)="toggle()">
-
   <div class="bg-neutral-700 toggle-switch m-0 p-0 rounded-full outline-none relative hidden h-5 w-10
     before:bg-white before:w-3 before:h-3 before:top-1 before:left-6 before:block before:absolute before:rounded-full
     after:top-3.5 after:right-0.5 after:w-0.5 after:h-0.5 after:block after:absolute after:rounded-sm
-    dark:bg-neutral-50 dark:before:left-1 dark:after:top-0 dark:after:w-6 dark:after:h-5 dark:after:rounded-full
-    dark:before:bg-neutral-700 dark:after:bg-neutral-50 dark:after:left-2.5
-  ">
+    dark:bg-neutral-100 dark:before:left-1 dark:after:top-0 dark:after:w-6 dark:after:h-5 dark:after:rounded-full
+    dark:before:bg-neutral-700 dark:after:bg-neutral-100 dark:after:left-2.5
+    before:transition-all before:duration-200 before:ease-in-out
+    after:transition-all after:duration-200 after:ease-in-out
+"
+       style="display: inline-block"
+  >
   </div>
 </div>

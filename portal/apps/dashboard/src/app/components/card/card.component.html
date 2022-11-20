@@ -1,18 +1,28 @@
 <div class="w-full h-full bg-white py-4 px-6 flex flex-col justify-start
-            shadow-lg rounded-lg
-            sm:hover:scale-110">
+            rounded-lg shadow-md shadow-neutral-200 dark:shadow-dark-500 dark:bg-dark-700
+">
+
   <div class="flex flex-row justify-between">
-    <label class="text-neutral-800 text-2xl font-semibold">{{name}}</label>
+    <label class="text-2xl text-primary-500 font-semibold dark:text-primary-400">{{name}}</label>
 
-    <a class="py-2 px-3 text-xs font-medium text-center text-white bg-primary-700 rounded-full cursor-pointer
-              hover:bg-primary-800 focus:outline-none"
-       href="{{url}}"
-       target="_blank">
-      Go
-    </a>
+    <button type="button" class="py-2 px-3 text-xs font-medium text-center text-white bg-primary-700 rounded-lg
+    hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300
+    dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+      Open
+      <i class="fa fa-rocket text-xs leading-lg ml-4"></i>
+    </button>
 
+
+<!--    <a class="py-2 px-2 text-xs font-medium text-center text-white bg-primary-500 rounded-lg cursor-pointer-->
+<!--              hover:bg-primary-700 focus:outline-none"-->
+<!--       href="{{url}}"-->
+<!--       target="_blank">-->
+<!--      Go-->
+<!--      -->
+<!--    </a>-->
   </div>
-  <p class="my-2 text-neutral-300 line-clamp-3">{{description}}</p>
+
+  <p class="my-2 text-neutral-500 line-clamp-3 dark:text-dark-400">{{description}}</p>
 
   <div class="flex justify-end mt-auto ">
     <span class="bg-accent-100 text-accent-700 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">

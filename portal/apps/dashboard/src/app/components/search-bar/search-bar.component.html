@@ -1,6 +1,6 @@
 <div class="relative">
   <form class="flex flex-row flex-wrap items-center">
-    <div class="relative flex flex-wrap items-stretch w-full mx-auto lg:w-1/2">
+    <div class="relative flex flex-wrap justify-between items-baseline w-full mx-auto lg:w-1/2">
       <span
         class="z-10 h-full leading-snug font-normal absolute text-center text-neutral-300 bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
           <i class="fas fa-search"></i>
@@ -11,8 +11,10 @@
              [ngModelOptions]="{standalone: true}"
              (ngModelChange)="valueChange(searchBarInput.value)"
              placeholder="Search here..."
-             class="border-0 px-3 py-3 placeholder-neutral-300 text-neutral-800 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring focus:ring-inset focus:ring-2 w-full pl-10 pr-16"
-      />
+             class="border-0 px-3 py-3 placeholder-neutral-300 text-neutral-800 relative bg-white bg-white rounded
+             text-sm shadow-none outline-none focus:outline-none focus:ring focus:ring-inset focus:ring-2 w-full pl-10 pr-16
+             hover:ring-dark-300 focus:ring-primary-500
+             dark:bg-dark-800 dark:hover:bg-dark-700"/>
       <span
         class="z-10 h-full leading-snug absolute text-neutral-300 bg-transparent rounded text-base py-3 mr-4 flex-none text-xs font-semibold right-0">
           Ctrl K

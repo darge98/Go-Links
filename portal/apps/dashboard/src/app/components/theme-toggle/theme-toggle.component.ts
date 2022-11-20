@@ -6,12 +6,12 @@ import {CommonModule} from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './theme-toggle.component.html',
-  styleUrls: ['./theme-toggle.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ThemeToggleComponent {
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef) {
+  }
 
   toggle() {
     const isDarkMode = document.getElementsByTagName('html')[0].classList.contains('dark');
