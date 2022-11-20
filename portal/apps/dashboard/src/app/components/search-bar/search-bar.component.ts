@@ -14,11 +14,11 @@ import {FormsModule} from "@angular/forms";
   standalone: true,
   imports: [FormsModule],
   templateUrl: './search-bar.component.html',
-  styles: [],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchBarComponent {
-  @Output() whenFormSubmit = new EventEmitter<string>();
+
+  @Output() whenValueChange = new EventEmitter<string>();
   @ViewChild('searchBarInput') searchBarInput: ElementRef | undefined;
 
   @HostListener('document:keydown.control.k', ['$event']) onCtrlK(event: KeyboardEvent) {
@@ -26,7 +26,7 @@ export class SearchBarComponent {
     this.searchBarInput?.nativeElement.focus();
   }
 
-  submitForm(value: string): void {
-    this.whenFormSubmit.emit(value);
+  valueChange(value: string): void {
+    this.whenValueChange.emit(value);
   }
 }

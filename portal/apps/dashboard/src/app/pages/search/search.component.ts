@@ -1,27 +1,73 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {SearchBarComponent} from "../../components/search-bar/search-bar.component";
-import {BehaviorSubject, ReplaySubject} from "rxjs";
+import {BehaviorSubject, Observable, switchMap, tap} from "rxjs";
+import {SearchService} from "../../services/search.service";
+import {AsyncPipe, NgFor, NgForOf, NgIf, NgTemplateOutlet} from "@angular/common";
+import {SearchRequest} from "../../entities/search/search-request";
+import {SearchResponse} from "../../entities/search/search-response";
+import {CardComponent} from "../../components/card/card.component";
 
 @Component({
   standalone: true,
-  imports: [SearchBarComponent],
+  imports: [
+    SearchBarComponent, CardComponent,
+    AsyncPipe, NgIf, NgFor, NgTemplateOutlet, NgForOf
+  ],
+  providers: [SearchService],
   templateUrl: './search.component.html',
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent {
 
-  searchValue$ = new ReplaySubject<string>(1);
+  formValue$ = new BehaviorSubject<string>('');
   error$ = new BehaviorSubject<boolean>(false);
   loading$ = new BehaviorSubject<boolean>(false);
-  searchValues$ = new ReplaySubject<string[]>();
+  searchValues$: Observable<SearchResponse[]> | undefined;
 
-  ngOnInit(): void {
-    return;
+  constructor(private searchService: SearchService) {
 
+    this.searchValues$ = this.formValue$.pipe(
+      tap(() => this.startRequest()),
+      switchMap(value => this.searchService.search(this.createSearchRequestPayload(value))),
+      tap({
+        next: () => this.endRequest(),
+        error: () => this.endRequestWithError()
+      })
+    )
   }
 
-  whenFormSubmit(searchValue: string): void {
-    this.searchValue$.next(searchValue);
+  whenValueChange(searchValue: string): void {
+    console.debug('valueChange:', searchValue);
+    this.formValue$.next(searchValue);
+  }
+
+  private startRequest() {
+    this.setLoading(true);
+    this.setError(false);
+  }
+
+  private endRequest() {
+    this.setLoading(false);
+    this.setError(false);
+  }
+
+  private endRequestWithError() {
+    this.setLoading(false);
+    this.setError(true);
+  }
+
+  private setLoading(value: boolean) {
+    this.loading$.next(value);
+  }
+
+  private setError(value: boolean) {
+    this.error$.next(value);
+  }
+
+  private createSearchRequestPayload(formValue: string): SearchRequest {
+    return {
+      textSearch: formValue
+    };
   }
 }

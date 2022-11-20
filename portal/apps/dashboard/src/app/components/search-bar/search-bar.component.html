@@ -1,5 +1,5 @@
 <div class="relative">
-  <form class="flex flex-row flex-wrap items-center" (ngSubmit)="submitForm(searchBarInput.value)">
+  <form class="flex flex-row flex-wrap items-center">
     <div class="relative flex flex-wrap items-stretch w-full mx-auto lg:w-1/2">
       <span
         class="z-10 h-full leading-snug font-normal absolute text-center text-neutral-300 bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3">
@@ -7,6 +7,9 @@
       </span>
       <input type="text"
              #searchBarInput
+             ngModel
+             [ngModelOptions]="{standalone: true}"
+             (ngModelChange)="valueChange(searchBarInput.value)"
              placeholder="Search here..."
              class="border-0 px-3 py-3 placeholder-neutral-300 text-neutral-800 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring focus:ring-inset focus:ring-2 w-full pl-10 pr-16"
       />

@@ -1,9 +1,24 @@
 <div>
-  <div class="mx-2 mt-12">
-    <dashboard-search-bar (whenFormSubmit)="whenFormSubmit($event)"></dashboard-search-bar>
+  <div class="mx-2 mt-8">
+    <dashboard-search-bar (whenValueChange)="whenValueChange($event)"></dashboard-search-bar>
   </div>
 
-  <div class="mt-8 md:mt-16">
+  <div class="mt-8 mb-4 md:mt-16">
+    <ng-container *ngIf="searchValues$ | async as values">
+      <ng-container *ngIf="(loading$ | async) === false; else loading">
+        <ng-container *ngIf="(error$ | async) === false; else error">
 
+          <div
+            class="grid grid-cols-1 gap-x-10 gap-y-8 justify-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4sm:mx-6 lg:mx-24">
+            <ng-container *ngFor="let value of values">
+              <dashboard-card [name]="value.name" [description]="value.description"></dashboard-card>
+            </ng-container>
+          </div>
+        </ng-container>
+      </ng-container>
+    </ng-container>
   </div>
 </div>
+
+<ng-template #loading></ng-template>
+<ng-template #error></ng-template>
