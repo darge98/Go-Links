@@ -1,38 +1,41 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {Component} from '@angular/core';
 import {SearchBarComponent} from "../../components/search-bar/search-bar.component";
-import {BehaviorSubject, Observable, switchMap, tap} from "rxjs";
+import {BehaviorSubject, catchError, debounceTime, Observable, of, switchMap, tap} from "rxjs";
 import {SearchService} from "../../services/search.service";
-import {AsyncPipe, NgFor, NgForOf, NgIf, NgTemplateOutlet} from "@angular/common";
+import {CommonModule} from "@angular/common";
 import {SearchRequest} from "../../entities/search/search-request";
 import {SearchResponse} from "../../entities/search/search-response";
 import {CardComponent} from "../../components/card/card.component";
+import {FurryComponent} from "../../components/furry/furry.component";
 
 @Component({
   standalone: true,
   imports: [
-    SearchBarComponent, CardComponent,
-    AsyncPipe, NgIf, NgFor, NgTemplateOutlet, NgForOf
+    SearchBarComponent, CardComponent, FurryComponent,
+    CommonModule
   ],
   providers: [SearchService],
   templateUrl: './search.component.html',
-  styles: [],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // styles: [],
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchComponent {
 
   formValue$ = new BehaviorSubject<string>('');
-  error$ = new BehaviorSubject<boolean>(false);
+  error$ = new BehaviorSubject<Error | null>(null);
   loading$ = new BehaviorSubject<boolean>(false);
   searchValues$: Observable<SearchResponse[]> | undefined;
 
   constructor(private searchService: SearchService) {
 
     this.searchValues$ = this.formValue$.pipe(
+      debounceTime(2000),
       tap(() => this.startRequest()),
       switchMap(value => this.searchService.search(this.createSearchRequestPayload(value))),
-      tap({
-        next: () => this.endRequest(),
-        error: () => this.endRequestWithError()
+      tap(() => this.endRequest()),
+      catchError(error => {
+        this.endRequestWithError(error);
+        return of([]);
       })
     )
   }
@@ -43,24 +46,24 @@ export class SearchComponent {
 
   private startRequest() {
     this.setLoading(true);
-    this.setError(false);
+    this.setError(null);
   }
 
   private endRequest() {
     this.setLoading(false);
-    this.setError(false);
+    this.setError(null);
   }
 
-  private endRequestWithError() {
+  private endRequestWithError(error: Error | null) {
     this.setLoading(false);
-    this.setError(true);
+    this.setError(error);
   }
 
   private setLoading(value: boolean) {
     this.loading$.next(value);
   }
 
-  private setError(value: boolean) {
+  private setError(value: Error | null) {
     this.error$.next(value);
   }
 

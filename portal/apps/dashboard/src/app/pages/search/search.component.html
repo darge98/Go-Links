@@ -6,8 +6,7 @@
   <div class="mt-8 mb-4 md:mt-16">
     <ng-container *ngIf="searchValues$ | async as values">
       <ng-container *ngIf="(loading$ | async) === false; else loading">
-        <ng-container *ngIf="(error$ | async) === false; else error">
-
+        <ng-container *ngIf="(error$ | async) === null; else errorTemplate">
           <div
             class="grid grid-cols-1 gap-x-10 gap-y-8 justify-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4sm:mx-6 lg:mx-24">
             <ng-container *ngFor="let value of values">
@@ -15,10 +14,22 @@
             </ng-container>
           </div>
         </ng-container>
+
+        <ng-template #errorTemplate>
+
+          <div class="flex flex-row justify-center items-start">
+            <dashboard-furry></dashboard-furry>
+            <div class="flex flex-col justify-center items-start">
+              <h1 class="font-bold text-7xl mb-2.5 uppercase text-primary-800 dark:text-dark-100">500</h1>
+              <h2 class="font-normal uppercase text-neutral-700 dark:text-dark-300">OOPS! </h2>
+<!--              <p class="font-normal text-sm max-w-xs" dangerouslySetInnerHTML={{__html: message}}></p>-->
+            </div>
+          </div>
+        </ng-template>
+
       </ng-container>
     </ng-container>
   </div>
 </div>
 
 <ng-template #loading></ng-template>
-<ng-template #error></ng-template>
