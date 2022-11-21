@@ -10,7 +10,7 @@ export class ConfigService {
   private config$ = new ReplaySubject<Config>(1);
 
   constructor(private http: HttpClient) {
-    this.http.get<Config>('/assets/config/config.json').pipe(
+    this.http.get<Config>('/assets/configs/config.json').pipe(
       take(1)
     ).subscribe({
       next: (data: Config) => this.config$.next(data),
