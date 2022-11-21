@@ -13,13 +13,23 @@ Go Links are not a simple url shortening system, like bit.ly, but is a productiv
 You can access your metrics dashbord with only <b>go/metrics</b>, see your ticket board with <b>go/tickets</b> or comment a pull request by only referring <b>go/java</b> for sharing yours language guidelines.
 
 ## :mag: Why this repo? 
-This repository was created to allow everyone to use Go Links without extra costs.
+This repository was created to share knowledge and allow everyone to use Go Links without extra costs.
+It provides:
 
-## :notebook_with_decorative_cover: How use it?
-In this repo there are 3 projects.
-- **Dashboard:** Dashboard to manage the go/links. Actually you only could search them.
-- **Browser Extension:** If you don't want map API host into DNS, users of your organization need to install it. It intercept the http request and redirect to the correct link when a go/link is required.
+- **Dashboard**: Dashboard to explore available go/links.
+- **Browser Extension**: If you don't want to edit your DNS configurations, people of your organization need to install the extension. It intercept the http request and redirect to the correct link when a go/link is required.
 - **Api:** Rest API with CRUD endpoint and a search endpoint for extract Go Links information. It uses ElasticSearch for storage. You could map this API to host 'go' for use it without the browser extension.
+
+## :microscope: Project Structure
+
+The project is divide in two macro-part.
+- **portal**
+- **api**
+
+Inside the `portal` folder there are the `dashboard` and `browser-extension`. The project is a [Nx Monorepo](https://nx.dev/more-concepts/why-monorepos).
+Inside the `api` folder there are [.NET6 Web Api](https://dotnet.microsoft.com/en-us/apps/aspnet/apis) project.
+
+You can check a [live demo](https://go-links-dashboard.vercel.app/) of the dashboard
 
 ## :memo: Changelog
 
