@@ -17,9 +17,9 @@ This repository was created to allow everyone to use Go Links without extra cost
 
 ## :notebook_with_decorative_cover: How use it?
 In this repo there are 3 projects.
-- **Portal:** Dashboard to manage the go/links. Actually you could search it with a full text search.
-- **Api:** Rest API with CRUD endpoint and a search endpoint for extract Go Links information. It uses ElasticSearch for storage for full text property. You could map this API to host 'go' for use it.
+- **Dashboard:** Dashboard to manage the go/links. Actually you only could search them.
 - **Browser Extension:** If you don't want map API host into DNS, users of your organization need to install it. It intercept the http request and redirect to the correct link when a go/link is required.
+- **Api:** Rest API with CRUD endpoint and a search endpoint for extract Go Links information. It uses ElasticSearch for storage. You could map this API to host 'go' for use it without the browser extension.
 
 ## :memo: Changelog
 
