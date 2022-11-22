@@ -12,22 +12,13 @@ Go Links are tipically private to the organization. This meaning that a user nee
 Go Links are not a simple url shortening system, like bit.ly, but is a productivity tool that allow teams access and share resources.
 You can access your metrics dashbord with only <b>go/metrics</b>, see your ticket board with <b>go/tickets</b> or comment a pull request by only referring <b>go/java</b> for sharing yours language guidelines.
 
-## :mag: Why this repo? 
-This repository was created to share knowledge and allow everyone to use Go Links without extra costs.
-It provides:
-
-- **Dashboard**: Dashboard to explore available go/links.
-- **Browser Extension**: If you don't want to edit your DNS configurations, people of your organization need to install the extension. It intercept the http request and redirect to the correct link when a go/link is required.
-- **Api:** Rest API with CRUD endpoint and a search endpoint for extract Go Links information. It uses ElasticSearch for storage. You could map this API to host 'go' for use it without the browser extension.
-
 ## :microscope: Project Structure
 
-The project is divide in two macro-part.
-- **portal**
-- **api**
-
-Inside the `portal` folder there are the `dashboard` and `browser-extension`. The project is a [Nx Monorepo](https://nx.dev/more-concepts/why-monorepos).
-Inside the `api` folder there are [.NET6 Web Api](https://dotnet.microsoft.com/en-us/apps/aspnet/apis) project.
+This repository was created to share knowledge and allow everyone to use Go Links without extra costs.
+It provides:
+- **portal:** [Nx Monorepo](https://nx.dev/more-concepts/why-monorepos) for the dashboard.
+- **api:** [.NET6 Web Api](https://dotnet.microsoft.com/en-us/apps/aspnet/apis) project.
+- **browser-extension:** Simple javascript project for Chrome extension.
 
 You can check a [live demo](https://go-links-dashboard.vercel.app/) of the dashboard
 
