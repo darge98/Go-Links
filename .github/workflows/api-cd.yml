@@ -38,8 +38,7 @@ jobs:
         with:
           files: ${{env.DOTNET_ROOT}}/myapp/appsettings.json
         env:
-          pwd: 'test'
-          #${{ secrets.PWD }}
+          ELKConfiguration.pwd: ${{ secrets.PWD }}
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
