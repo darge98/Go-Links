@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoLinks", "GoLinks\GoLinks.csproj", "{B01F03C3-B90F-47E0-B0E8-65455DFDEBDB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B01F03C3-B90F-47E0-B0E8-65455DFDEBDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B01F03C3-B90F-47E0-B0E8-65455DFDEBDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B01F03C3-B90F-47E0-B0E8-65455DFDEBDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B01F03C3-B90F-47E0-B0E8-65455DFDEBDB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
