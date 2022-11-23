@@ -11,6 +11,10 @@ on:
     - api
   workflow_dispatch:
 
+defaults:
+  run:
+    working-directory: api
+
 jobs:
   build:
     runs-on: windows-latest
