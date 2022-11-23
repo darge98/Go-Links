@@ -38,7 +38,8 @@ jobs:
         with:
           files: ${{env.DOTNET_ROOT}}/myapp/appsettings.json
         env:
-          pwd: ${{ secrets.PWD }}
+          pwd: 'test'
+          #${{ secrets.PWD }}
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
