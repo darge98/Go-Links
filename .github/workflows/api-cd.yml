@@ -30,7 +30,7 @@ jobs:
       
       - uses: microsoft/variable-substitution@v1 
         with:
-          files: 'appsettings.json'
+          files: ${{env.DOTNET_ROOT}}/GoLinks/appsettings.json
         env:
           pwd: ${{ secrets.PWD }}
 
