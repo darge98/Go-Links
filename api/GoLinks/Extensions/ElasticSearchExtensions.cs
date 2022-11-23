@@ -1,4 +1,5 @@
-﻿using GoLinks.Entities;
+﻿using Elasticsearch.Net;
+using GoLinks.Entities;
 using Nest;
 
 namespace GoLinks.Extensions;
@@ -11,20 +12,19 @@ public static class ElasticSearchExtensions
     public static void AddElasticsearch(
         this IServiceCollection services, IConfiguration configuration)
     {
-        var url = configuration["ELKConfiguration:Uri"];
+        var url = configuration["ELKConfiguration:uri"];
         var defaultIndex = configuration["ELKConfiguration:index"];
+        var userName = configuration["ELKConfiguration:username"];
+        var password = configuration["ELKConfiguration:pwd"];
 
-        var settings = new ConnectionSettings(new Uri(url)) 
-            //.BasicAuthentication(userName, pass)
+        var settings = new ConnectionSettings(new Uri(url))
+            .BasicAuthentication(userName, password)
             .PrettyJson()
             .DefaultIndex(defaultIndex);
 
         AddDefaultMappings(settings);
-
         var client = new ElasticClient(settings);
-
         services.AddSingleton<IElasticClient>(client);
-
         CreateIndex(client, defaultIndex);
     }
 
