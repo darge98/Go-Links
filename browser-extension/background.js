@@ -20,7 +20,7 @@ function redirectGoLink(details) {
 
 
 function redirectSearchLink(details) {
-    const goLink = details.url.replace(/(.*)\:\/\/(.*)=go%2F/, "")
+    const golink = details.url.replace(/(.*)\:\/\/(.*)=go%2F/, "")
         .replace(/%2F/g, "/") // Global flag g is included to replace all "%2F" with "/"
         .replace(/\&fr=opensearch|\&addon=opensearch/, "")// Remove trailing query string content of the search link
         .split('&')[0];
