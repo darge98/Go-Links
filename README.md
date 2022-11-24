@@ -23,7 +23,7 @@ It provides:
 You can check a [live demo](https://go-links-dashboard.vercel.app/) of the dashboard here.
 
 To test the redirect with the browser-extension you need to download the folder **browser-extension**, go to Chrome > Type chrome://extensions/ > Enable Developer Mode > Click "Load unpacked extension" and select the browser-extension folder. 
-Now you can type "go/<link>" (check the dashboard for available link) and you will be redirect to the page.
+Now you can type "go/{link}" (check the dashboard for available link) and you will be redirect to the page.
 
 ## :memo: Changelog
 
