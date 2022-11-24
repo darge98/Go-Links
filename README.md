@@ -20,7 +20,10 @@ It provides:
 - **api:** [.NET6 Web Api](https://dotnet.microsoft.com/en-us/apps/aspnet/apis) project.
 - **browser-extension:** Simple javascript project for Chrome extension.
 
-You can check a [live demo](https://go-links-dashboard.vercel.app/) of the dashboard
+You can check a [live demo](https://go-links-dashboard.vercel.app/) of the dashboard here.
+
+To test the redirect with the browser-extension you need to download the folder **browser-extension**, go to Chrome > Type chrome://extensions/ > Enable Developer Mode > Click "Load unpacked extension" and select the browser-extension folder. 
+Now you can type "go/<link>" (check the dashboard for available link) and you will be redirect to the page.
 
 ## :memo: Changelog
 
