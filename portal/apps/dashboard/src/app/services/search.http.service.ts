@@ -13,30 +13,11 @@ export class SearchHttpService {
   constructor(private http: HttpClient, private configService: ConfigService) {
   }
 
-  search(request: SearchRequest): Observable<SearchResponse[]> {
+  search(request: SearchRequest): Observable<SearchResponse> {
     return this.configService.readConfig().pipe(
       map(config => config.searchEngineHost),
-      map(host => `${host}/search`),
-      switchMap(url => this.http.post<SearchResponse[]>(url, request))
-      // map(() => [
-      //   {
-      //     id: 'angular',
-      //     name: 'Angular',
-      //     description: 'Linee guida per lo sviluppo dei progetti Angular'
-      //   },
-      //   {
-      //     id: 'java',
-      //     name: 'Java',
-      //     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae dolores\n' +
-      //       '                    deserunt ea doloremque natus error, rerum quas odio quaerat nam ex commodi hic, suscipit in a\n' +
-      //       '                    veritatis pariatur minus consequuntur'
-      //   },
-      //   {
-      //     id: 'ticket',
-      //     name: 'Ticket',
-      //     description: 'Portale dei ticket'
-      //   }
-      // ])
+      map(host => `${host}/_search`),
+      switchMap(url => this.http.post<SearchResponse>(url, request))
     );
   }
 }

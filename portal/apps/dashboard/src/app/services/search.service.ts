@@ -13,7 +13,7 @@ export class SearchService {
 
   }
 
-  search(request: SearchRequest): Observable<SearchResponse[]> {
+  search(request: SearchRequest): Observable<SearchResponse> {
     return this.searchHttpService.search(request);
   }
 }

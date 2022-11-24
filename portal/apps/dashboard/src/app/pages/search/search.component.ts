@@ -1,10 +1,10 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {SearchBarComponent} from "../../components/search-bar/search-bar.component";
-import {BehaviorSubject, catchError, debounceTime, Observable, of, switchMap, tap} from "rxjs";
+import {BehaviorSubject, catchError, debounceTime, map, Observable, of, switchMap, tap} from "rxjs";
 import {SearchService} from "../../services/search.service";
 import {CommonModule} from "@angular/common";
 import {SearchRequest} from "../../entities/search/search-request";
-import {SearchResponse} from "../../entities/search/search-response";
+import {Item, SearchResponse} from "../../entities/search/search-response";
 import {CardComponent} from "../../components/cards/card/card.component";
 import {FurryComponent} from "../../components/furry/furry.component";
 import {HttpErrorResponse} from "@angular/common/http";
@@ -26,7 +26,7 @@ export class SearchComponent {
   formValue$ = new BehaviorSubject<string>('');
   error$ = new BehaviorSubject<AppError | null>(null);
   loading$ = new BehaviorSubject<boolean>(false);
-  searchValues$: Observable<SearchResponse[]> | undefined;
+  searchValues$: Observable<Item[]> | undefined;
 
   constructor(private searchService: SearchService) {
 
@@ -34,6 +34,7 @@ export class SearchComponent {
       debounceTime(2000),
       tap(() => this.startRequest()),
       switchMap(value => this.searchService.search(this.createSearchRequestPayload(value))),
+      map(response => response.items),
       tap(() => this.endRequest()),
       catchError(error => {
         this.endRequestWithError(error);

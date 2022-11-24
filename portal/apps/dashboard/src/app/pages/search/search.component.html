@@ -12,7 +12,7 @@
             <div
               class="grid grid-cols-1 gap-x-10 gap-y-8 justify-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4sm:mx-6 lg:mx-24">
               <ng-container *ngFor="let value of values">
-                <dashboard-card [name]="value.name" [description]="value.description"></dashboard-card>
+                <dashboard-card [name]="value.name" [description]="value.description" [tags]="value.tags"></dashboard-card>
               </ng-container>
             </div>
           </ng-container>
