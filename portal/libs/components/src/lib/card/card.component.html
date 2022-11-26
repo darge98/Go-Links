@@ -1,0 +1,25 @@
+<div class="w-full h-full bg-white py-4 px-6 flex flex-col justify-start
+            rounded-lg shadow-md shadow-neutral-200 dark:shadow-dark-500 dark:bg-dark-700">
+
+  <div class="flex flex-row justify-between">
+    <label class="text-2xl text-primary-900 font-semibold dark:text-primary-400 uppercase">{{name}}</label>
+
+    <a href="{{url}}" target="_blank"
+       class="bg-primary-900 hover:bg-primary-800 py-2 px-2.5
+            focus:outline-none rounded-full inline-flex">
+      <i class="fa fa-rocket text-xs leading-lg text-white pr-px pt-px"></i>
+    </a>
+  </div>
+
+  <p class="my-2 text-neutral-500 line-clamp-3 dark:text-dark-200">{{description}}</p>
+
+  <div class="flex flex-wrap justify-end mt-auto overflow-hidden">
+    <span class="bg-accent-100 text-accent-700 text-xs font-semibold mt-1 mr-2 px-2.5 py-0.5 rounded"
+          *ngFor="let tag of tags">
+      {{tag}}
+    </span>
+  </div>
+</div>
+
+
+

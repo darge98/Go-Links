@@ -1,9 +1,10 @@
 import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
+import {NgForOf} from '@angular/common';
 
 @Component({
-  selector: 'dashboard-card',
+  selector: 'portal-card',
   standalone: true,
-  imports: [],
+  imports: [NgForOf],
   templateUrl: './card.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -12,5 +13,4 @@ export class CardComponent {
   @Input() description = '';
   @Input() url = '';
   @Input() tags: string[] = [];
-
 }
