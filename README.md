@@ -27,7 +27,7 @@ Now you can type "go/{link}" (check the dashboard for available link) and you wi
 
 ## :memo: Changelog
 
-TBD
+[Learn about the latest improvements.](CHANGELOG.md)
 
 
 ## :pencil2: Contributing
