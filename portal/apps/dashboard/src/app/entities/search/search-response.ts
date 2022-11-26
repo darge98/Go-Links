@@ -1,9 +1,9 @@
 export interface SearchResponse {
-  items: Item[];
+  items: GoLink[];
   totalItem: number;
 }
 
-export interface Item {
+export interface GoLink {
   id: string;
   name: string;
   description: string;

@@ -1,10 +1,9 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {SearchBarComponent} from "../../components/search-bar/search-bar.component";
-import {BehaviorSubject, catchError, debounceTime, map, Observable, of, switchMap, tap} from "rxjs";
+import {BehaviorSubject, catchError, Observable, of, switchMap} from "rxjs";
 import {SearchService} from "../../services/search.service";
 import {CommonModule} from "@angular/common";
-import {SearchRequest} from "../../entities/search/search-request";
-import {Item, SearchResponse} from "../../entities/search/search-response";
+import {GoLink} from "../../entities/search/search-response";
 import {CardComponent} from "../../components/cards/card/card.component";
 import {FurryComponent} from "../../components/furry/furry.component";
 import {HttpErrorResponse} from "@angular/common/http";
@@ -26,16 +25,14 @@ export class SearchComponent {
   formValue$ = new BehaviorSubject<string>('');
   error$ = new BehaviorSubject<AppError | null>(null);
   loading$ = new BehaviorSubject<boolean>(false);
-  searchValues$: Observable<Item[]> | undefined;
+  searchValues$: Observable<GoLink[]> | undefined;
 
   constructor(private searchService: SearchService) {
 
     this.searchValues$ = this.formValue$.pipe(
-      debounceTime(2000),
-      tap(() => this.startRequest()),
-      switchMap(value => this.searchService.search(this.createSearchRequestPayload(value))),
-      map(response => response.items),
-      tap(() => this.endRequest()),
+      // tap(() => this.startRequest()),
+      switchMap(value => this.searchService.search(value)),
+      // tap(() => this.endRequest()),
       catchError(error => {
         this.endRequestWithError(error);
         return of([]);
@@ -47,15 +44,15 @@ export class SearchComponent {
     this.formValue$.next(searchValue);
   }
 
-  private startRequest() {
-    this.setLoading(true);
-    this.setError(null);
-  }
-
-  private endRequest() {
-    this.setLoading(false);
-    this.setError(null);
-  }
+  // private startRequest() {
+  //   this.setLoading(true);
+  //   this.setError(null);
+  // }
+  //
+  // private endRequest() {
+  //   this.setLoading(false);
+  //   this.setError(null);
+  // }
 
   private endRequestWithError(error: HttpErrorResponse | Error | null) {
     this.setLoading(false);
@@ -89,11 +86,5 @@ export class SearchComponent {
     }
 
     return new AppError(status, description, courtesyMessage);
-  }
-
-  private createSearchRequestPayload(formValue: string): SearchRequest {
-    return {
-      textSearch: formValue
-    };
   }
 }
