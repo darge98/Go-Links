@@ -1,0 +1,7 @@
+{
+  "name": "design-system",
+  "projectType": "library",
+  "sourceRoot": "libs/design-system",
+  "targets": {},
+  "tags": []
+}

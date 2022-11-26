@@ -1,11 +1,11 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 
 @Component({
-  selector: 'dashboard-skeleton-card',
+  selector: 'portal-furry',
   standalone: true,
-  templateUrl: './skeleton-card.component.html',
+  templateUrl: './furry.component.html',
+  styleUrls: ['./furry.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SkeletonCardComponent {
-
+export class FurryComponent {
 }

@@ -1,20 +1,16 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {SearchBarComponent} from "../../components/search-bar/search-bar.component";
 import {BehaviorSubject, catchError, Observable, of, switchMap} from "rxjs";
 import {SearchService} from "../../services/search.service";
 import {CommonModule} from "@angular/common";
 import {GoLink} from "../../entities/search/search-response";
-import {CardComponent} from "../../components/cards/card/card.component";
-import {FurryComponent} from "../../components/furry/furry.component";
 import {HttpErrorResponse} from "@angular/common/http";
 import {AppError} from "../../entities/error/app-error";
-import {SkeletonCardComponent} from "../../components/cards/skeleton-card/skeleton-card.component";
+import {CardComponent, FurryComponent, SearchBarComponent} from "@portal/components";
 
 @Component({
   standalone: true,
   imports: [
-    SearchBarComponent, CardComponent, FurryComponent,
-    CommonModule, SkeletonCardComponent
+    SearchBarComponent, CardComponent, FurryComponent, CommonModule
   ],
   providers: [SearchService],
   templateUrl: './search.component.html',

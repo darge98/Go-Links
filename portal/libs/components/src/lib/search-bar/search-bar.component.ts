@@ -10,11 +10,12 @@ import {
 import {FormsModule} from "@angular/forms";
 
 @Component({
-  selector: 'dashboard-search-bar',
+  selector: 'portal-search-bar',
   standalone: true,
   imports: [FormsModule],
   templateUrl: './search-bar.component.html',
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  styles: [],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchBarComponent {
 

@@ -1,27 +1,28 @@
 <div class="mx-4">
   <div class="mx-2">
-    <dashboard-search-bar (whenValueChange)="whenValueChange($event)"></dashboard-search-bar>
+    <portal-search-bar (whenValueChange)="whenValueChange($event)"></portal-search-bar>
   </div>
 
   <div class="my-8 md:mt-16">
     <ng-container *ngIf="searchValues$ | async as values">
-        <ng-container *ngIf="(error$ | async) === null; else errorTemplate">
+      <ng-container *ngIf="(error$ | async) === null; else errorTemplate">
 
-          <ng-container *ngIf="values.length > 0; else noItemFound">
-            <div
-              class="grid grid-cols-1 gap-x-10 gap-y-8 justify-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4sm:mx-6 lg:mx-24">
-              <ng-container *ngFor="let value of values">
-                <dashboard-card [name]="value.name" [description]="value.description" [tags]="value.tags" [url]="value.redirectUrl"></dashboard-card>
-              </ng-container>
-            </div>
-          </ng-container>
-
-          <ng-template #noItemFound>
-            <ng-container *ngTemplateOutlet="furryInfo; context: {description: 'Nessun elemento trovato'}"></ng-container>
-          </ng-template>
-
-
+        <ng-container *ngIf="values.length > 0; else noItemFound">
+          <div
+            class="grid grid-cols-1 gap-x-10 gap-y-8 justify-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4sm:mx-6 lg:mx-24">
+            <ng-container *ngFor="let value of values">
+              <portal-card [name]="value.name" [description]="value.description" [tags]="value.tags"
+                           [url]="value.redirectUrl"></portal-card>
+            </ng-container>
+          </div>
         </ng-container>
+
+        <ng-template #noItemFound>
+          <ng-container *ngTemplateOutlet="furryInfo; context: {description: 'Nessun elemento trovato'}"></ng-container>
+        </ng-template>
+
+
+      </ng-container>
     </ng-container>
   </div>
 </div>
@@ -36,7 +37,7 @@
 
 <ng-template #furryInfo let-title='title' let-description='description' let-courtesyMessage='courtesyMessage'>
   <div class="flex flex-col justify-center items-center md:flex-row">
-    <dashboard-furry></dashboard-furry>
+    <portal-furry></portal-furry>
     <div class="flex flex-col justify-center items-center text-center md:items-start md:text-left">
       <h1 class="font-bold text-7xl mb-2.5 uppercase text-primary-800 dark:text-dark-100">{{title}}</h1>
       <h2 class="font-normal text-2xl uppercase text-neutral-500 dark:text-dark-300">OOPS! {{description}}</h2>
