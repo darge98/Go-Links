@@ -30,9 +30,7 @@ export class SearchComponent {
   constructor(private searchService: SearchService) {
 
     this.searchValues$ = this.formValue$.pipe(
-      // tap(() => this.startRequest()),
       switchMap(value => this.searchService.search(value)),
-      // tap(() => this.endRequest()),
       catchError(error => {
         this.endRequestWithError(error);
         return of([]);
@@ -44,23 +42,8 @@ export class SearchComponent {
     this.formValue$.next(searchValue);
   }
 
-  // private startRequest() {
-  //   this.setLoading(true);
-  //   this.setError(null);
-  // }
-  //
-  // private endRequest() {
-  //   this.setLoading(false);
-  //   this.setError(null);
-  // }
-
   private endRequestWithError(error: HttpErrorResponse | Error | null) {
-    this.setLoading(false);
     this.setError(error);
-  }
-
-  private setLoading(value: boolean) {
-    this.loading$.next(value);
   }
 
   private setError(value: HttpErrorResponse | Error | null) {
