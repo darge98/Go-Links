@@ -13,7 +13,10 @@ export class SearchService {
     this.getAllLinks().pipe(
       map(res => res.items),
       take(1)
-    ).subscribe(links => this.data$.next(links));
+    ).subscribe({
+      next: links => this.data$.next(links),
+      error: error => this.data$.error(error)
+    });
   }
 
   search(searchValue: string): Observable<GoLink[]> {

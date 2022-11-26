@@ -20,7 +20,6 @@ export class SearchComponent {
 
   formValue$ = new BehaviorSubject<string>('');
   error$ = new BehaviorSubject<AppError | null>(null);
-  loading$ = new BehaviorSubject<boolean>(false);
   searchValues$: Observable<GoLink[]> | undefined;
 
   constructor(private searchService: SearchService) {
