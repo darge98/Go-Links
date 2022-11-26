@@ -27,7 +27,7 @@ export class SearchComponent {
     this.searchValues$ = this.formValue$.pipe(
       switchMap(value => this.searchService.search(value)),
       catchError(error => {
-        this.endRequestWithError(error);
+        this.setError(error);
         return of([]);
       })
     )
@@ -35,10 +35,6 @@ export class SearchComponent {
 
   whenValueChange(searchValue: string): void {
     this.formValue$.next(searchValue);
-  }
-
-  private endRequestWithError(error: HttpErrorResponse | Error | null) {
-    this.setError(error);
   }
 
   private setError(value: HttpErrorResponse | Error | null) {
