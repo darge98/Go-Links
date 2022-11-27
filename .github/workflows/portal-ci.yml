@@ -1,13 +1,14 @@
 name: Go Links Portal - Continuos Integration
 
 on:
-  push:
+  pull_request_target:
+    types:
+      - opened
     branches:
       - main
       - rc/*
     paths:
     - portal/**
-  workflow_dispatch:
 
 defaults:
   run:
