@@ -20,14 +20,16 @@ export class SearchService {
   }
 
   search(searchValue: string): Observable<GoLink[]> {
+    const term = searchValue.toLowerCase();
     return this.data$.pipe(
       take(1),
       switchMap(data =>
         from(data).pipe(
           filter(link =>
-            link.name.includes(searchValue)
-            || link.description.includes(searchValue)
-            || link.tags.every(t => t.includes(searchValue)))
+            link.name.toLowerCase().includes(term)
+            || link.description.toLowerCase().includes(term)
+            || (link.tags.length > 0 && link.tags.every(t => t.includes(term)))
+          )
         )
       ),
       toArray()
