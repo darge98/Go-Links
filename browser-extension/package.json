@@ -8,8 +8,8 @@
   "scripts": {
     "dev": "plasmo dev --target=firefox-mv2",
     "build": "plasmo build",
-    "build:source-maps": "plasmo build --source-maps",
-    "package": "plasmo package"
+    "build:source-maps": "plasmo build --source-maps --target=firefox-mv2",
+    "package": "plasmo package --target=firefox-mv2"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.2.1",
