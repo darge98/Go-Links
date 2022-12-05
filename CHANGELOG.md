@@ -1,3 +1,10 @@
+<a name="1.2.0"></a>
+# 1.2.0 (2022-12-05)
+## browser-extension
+| Commit | Type | Description |
+| -- | -- | -- |
+| [da15e42](https://github.com/darge98/Go-Links/commit/da15e423696ac0076ce9943a7bb0fad51bb120fd) | feat | Add extension popup for quick search
+
 <a name="1.1.0"></a>
 # 1.1.0 (2022-11-26)
 ## portal
