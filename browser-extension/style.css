@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap");
+@import url("@fortawesome/fontawesome-free/css/all.min.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+
+        /* For hsl(198deg 93% 60% / <alpha-value>) */
+
+        /* These are the splashes of color that should appear the most in your UI,
+        and are the ones that determine the overall "look" of the site. Use these
+        for things like primary actions, links, navigation items, icons, accent
+        borders, or text you want to emphasize. */
+
+        --color-primary-900: 205deg 100% 21%;
+        --color-primary-800: 205deg 87% 29%;
+        --color-primary-700: 205deg 82% 33%;
+        --color-primary-600: 205deg 76% 39%;
+        --color-primary-500: 205deg 67% 45%;
+        --color-primary-400: 205deg 65% 55%;
+        --color-primary-300: 205deg 74% 65%;
+        --color-primary-200: 205deg 84% 74%;
+        --color-primary-100: 205deg 97% 85%;
+        --color-primary-50: 205deg 79% 92%;
+
+        --color-accent-900: 15deg 86% 30%;
+        --color-accent-800: 22deg 82% 39%;
+        --color-accent-700: 29deg 80% 44%;
+        --color-accent-600: 36deg 77% 49%;
+        --color-accent-500: 42deg 87% 55%;
+        --color-accent-400: 44deg 92% 63%;
+        --color-accent-300: 48deg 94% 68%;
+        --color-accent-200: 48deg 95% 76%;
+        --color-accent-100: 48deg 100% 88%;
+        --color-accent-50: 49deg 100% 96%;
+
+        /* These are the colors you will use the most and will make up the majority
+        of your UI. Use them for most of your text, backgrounds, and borders,
+        as well as for things like secondary buttons and links. */
+
+        --color-neutral-900: 209deg 61% 16%;
+        --color-neutral-800: 211deg 39% 23%;
+        --color-neutral-700: 209deg 34% 30%;
+        --color-neutral-600: 209deg 28% 39%;
+        --color-neutral-500: 210deg 22% 49%;
+        --color-neutral-400: 209deg 23% 60%;
+        --color-neutral-300: 211deg 27% 70%;
+        --color-neutral-200: 210deg 31% 80%;
+        --color-neutral-100: 212deg 33% 89%;
+        --color-neutral-50: 210deg 36% 96%;
+
+        /* These colors should be used fairly conservatively throughout your UI to
+        avoid overpowering your primary colors. Use them when you need an
+        element to stand out, or to reinforce things like error states or positive
+        trends with the appropriate semantic color. */
+
+        --color-supporting-900: 184deg 91% 17%;
+        --color-supporting-800: 185deg 84% 25%;
+        --color-supporting-700: 185deg 81% 29%;
+        --color-supporting-600: 184deg 77% 34%;
+        --color-supporting-500: 185deg 62% 45%;
+        --color-supporting-400: 185deg 57% 50%;
+        --color-supporting-300: 184deg 65% 59%;
+        --color-supporting-200: 184deg 80% 74%;
+        --color-supporting-100: 185deg 94% 87%;
+        --color-supporting-50: 186deg 100% 94%;
+    }
+
+    html {
+        font-family: Proxima Nova, system-ui, sans-serif;
+    }
+}

@@ -1,0 +1,60 @@
+{
+  "name": "browser-extension",
+  "displayName": "Go Link",
+  "version": "0.0.0",
+  "description": "GoLinks improves productivity by helping teams find and share information fast with memorable short links called go/links.",
+  "author": "darge",
+  "packageManager": "yarn@1.22.19",
+  "scripts": {
+    "dev": "plasmo dev --target=firefox-mv2",
+    "build": "plasmo build",
+    "build:source-maps": "plasmo build --source-maps",
+    "package": "plasmo package"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.2.1",
+    "@material-tailwind/react": "^1.2.4",
+    "@tailwindcss/forms": "0.5.3",
+    "@tailwindcss/typography": "0.5.8",
+    "plasmo": "0.59.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "tailwindcss": "3.2.4"
+  },
+  "devDependencies": {
+    "@plasmohq/prettier-plugin-sort-imports": "3.6.0",
+    "@tailwindcss/line-clamp": "^0.4.2",
+    "@types/chrome": "0.0.202",
+    "@types/node": "18.11.9",
+    "@types/react": "18.0.25",
+    "@types/react-dom": "18.0.9",
+    "postcss": "8.4.19",
+    "prettier": "2.7.1",
+    "typescript": "4.9.3"
+  },
+  "manifest": {
+    "host_permissions": [
+      "<all_urls>",
+      "https://*/*",
+      "webRequest",
+      "webRequestBlocking",
+      "tabs"
+    ],
+    "permissions": [
+      "<all_urls>",
+      "tabs",
+      "webRequest",
+      "webRequestBlocking"
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": [
+          "assets/config/config.json"
+        ],
+        "matches": [
+          "<all_urls>"
+        ]
+      }
+    ]
+  }
+}
